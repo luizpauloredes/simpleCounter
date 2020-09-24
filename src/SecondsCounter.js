@@ -1,24 +1,24 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Proptypes from 'prop-types';
+import App from './App';
 
 //okay from here below
-const SecondsCounter = (props) => {
+const SecondsCounter = () => {
+  const [timer, setTimer] = useState(0)
 
-  var contador =  () => {
-    var inicial = props.seconds;
-    var location = document.getElementById('contador');
+  useEffect(() => {
     setInterval(() => {
-      location.innerHTML = inicial;
-      inicial++;
-    }, 1000); 
-  }   
+      setTimer(timer => timer++)
+    }, 1000)
+  }, [])
+
 
   return (
     <div className="container py-3 bg-dark text-light">
       <h1 >
-        <i className="far fa-clock mr-5"></i>{contador}
+        <i className="far fa-clock mr-5 p"></i>
       </h1>
-      
+
     </div>
   )
 }
